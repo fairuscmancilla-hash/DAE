@@ -190,19 +190,6 @@ fragmento que se reutiliza en dos páginas, lo que evita duplicar marcado.
 `test_home_extends_the_base_template`, `test_empty_block_when_there_are_no_articles`,
 `test_card_fragment_is_reused_on_the_category_page`.
 
-### 6.2 Plantilla para los demás integrantes
-
-Copia este bloque y completa los campos con tu nombre y desarrollo:
-
-```markdown
-### <Nombre del alumno> — <Título del desarrollo>
-
-- **Captura del resultado:** ![](capturas/<archivo>.png)
-- **Código:** 
-- **Explicación del resultado:**
-- **Casos de prueba:**
-```
-
 ## 7. Casos de prueba
 
 `python manage.py test news` ejecuta **10 pruebas** (todas en verde):
@@ -231,15 +218,3 @@ Copia este bloque y completa los campos con tu nombre y desarrollo:
   `>`, `"` y `'`) antes de mostrarlo. Es una protección contra XSS; solo se
   desactiva explícitamente con `|safe`, que este laboratorio no usa.
 
-## 9. Alineación con la rúbrica (20 puntos)
-
-1. **Motor de plantillas con herencia y fragmentos (5 pts):** `base.html` +
-   fragmentos `_article_card.html` y `_sidebar.html` reutilizados sin repetir
-   marcado → sección 4.1 y capturas 01–04.
-2. **Datos del modelo con variables, control y filtros (5 pts):** recorridos
-   `for/empty`, condicionales y filtros de fecha/recorte en la plantilla → sección 4.2.
-3. **Contenido desde el administrador (5 pts):** los cambios del panel se ven en
-   el sitio sin tocar código (SiteSetting, artículos, categorías, autores) →
-   sección 4.3 y captura 05.
-4. **Entrega del repositorio con plantillas y observaciones (5 pts):** este
-   README documenta estructura, funcionamiento y evidencias → secciones 5 y 6.
