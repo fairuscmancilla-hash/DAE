@@ -1,0 +1,4 @@
+{% extends "base.html" %}
+{% block title %}{{ category.name }} | {{ site.site_name }}{% endblock %}
+{% block content %}<header class="category-hero"><a class="back-link" href="{% url 'news:home' %}">← Volver a portada</a><span class="eyebrow">Sección</span><h1 class="page-title">{{ category.name }}</h1>{% if category.description %}<p class="lead">{{ category.description }}</p>{% endif %}<p class="category-total">{{ articles|length }} noticia{{ articles|length|pluralize:",s" }} publicada{{ articles|length|pluralize:",s" }}</p></header><div class="card-grid">{% for article in articles %}{% include "news/_article_card.html" with article=article only %}{% empty %}<div class="empty-state"><strong>Esta sección aún está tomando forma.</strong><span>Vuelve pronto para descubrir nuevas historias.</span></div>{% endfor %}</div>{% endblock %}
+{% block sidebar %}{% include "news/_sidebar.html" %}{% endblock %}

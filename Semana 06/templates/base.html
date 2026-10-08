@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ site.tagline|default:'Actualidad, análisis e historias relevantes.' }}">
+    <title>{% block title %}{{ site.site_name }}{% endblock %}</title>
+    <script>document.documentElement.dataset.theme=localStorage.getItem("news-theme")||"light";</script>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"><script src="{% static 'js/site.js' %}" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="site-header">
+    <div class="topline"><div class="container topline-inner"><span>Información que conecta</span><time id="current-date"></time></div></div>
+    <div class="container header-inner">
+        <a class="brand" href="{% url 'news:home' %}" aria-label="Ir a la portada"><span class="brand-mark" aria-hidden="true">N</span><span><strong>{{ site.site_name }}</strong>{% if site.tagline %}<small>{{ site.tagline }}</small>{% endif %}</span></a>
+        <div class="header-actions"><button class="icon-button theme-toggle" type="button" aria-label="Cambiar tema"><span class="theme-icon" aria-hidden="true">☾</span></button><button class="icon-button menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">☰</button></div>
+    </div>
+    <nav class="main-nav" id="main-nav" aria-label="Navegación principal"><div class="container nav-inner"><a class="nav-home" href="{% url 'news:home' %}">Portada</a>{% for category in categories %}<a href="{{ category.get_absolute_url }}">{{ category.name }}</a>{% endfor %}<a class="admin-link" href="{% url 'admin:index' %}">Administración</a></div></nav>
+</header>
+<div class="container layout"><main class="content" id="contenido">{% block content %}{% endblock %}</main><aside class="sidebar" aria-label="Contenido complementario">{% block sidebar %}{% endblock %}</aside></div>
+<footer class="site-footer"><div class="container footer-inner"><div><a class="footer-brand" href="{% url 'news:home' %}">{{ site.site_name }}</a><p>{{ site.tagline }}</p></div><p class="footer-note">Desarrollo de Aplicaciones Empresariales · Semana 6</p></div></footer>
+</body></html>
