@@ -117,3 +117,12 @@ pasan desde el principio.
 ## Convenciones del curso
 
 Código, nombres y comentarios en inglés; explicaciones y entregables en español. PEP 8.
+
+## Conclusiones
+
+- Se implementó la API de cuestionarios con Django REST Framework: serializadores derivados del modelo (`Exam`, `Question`, `Choice`), validación propia (exactamente una opción correcta) y relaciones anidadas para las opciones.
+- Los tres recursos se publicaron mediante viewsets y un `DefaultRouter`, con paginación de 5, filtrado por examen y búsqueda por texto.
+- Se verificaron por HTTP (API navegable y cliente externo) las operaciones CRUD y los códigos de estado (200, 201, 204, 400, 401, 403, 404), incluidos los errores provocados a propósito (campo ausente, tipo incorrecto, validación de opción correcta).
+- El cliente de consola `quizctl` mapea códigos de salida y construye el cuerpo de preguntas; los permisos del servidor distinguen persona (todo), agente (leer/crear/modificar, nunca borrar) y lector (solo lectura).
+- La frontera del agente valida intenciones contra el contrato OpenAPI y exige aprobación humana (con token de la persona) para operaciones destructivas; los datos devueltos se tratan como no confiables.
+- Resultado: `python manage.py test` → 61 tests OK.
