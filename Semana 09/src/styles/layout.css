@@ -1,0 +1,114 @@
+/* Layout: page shell, header, main sections and footer. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem clamp(1rem, 4vw, 3rem);
+  background: rgb(15 23 42 / 0.96);
+  color: #f8fafc;
+  backdrop-filter: blur(8px);
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+  letter-spacing: 0.02em;
+}
+
+.site-header nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-header a {
+  color: #e2e8f0;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.site-header a:hover {
+  color: var(--color-highlight);
+}
+
+main {
+  width: min(72rem, 100%);
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 4vw, 3rem) 4rem;
+}
+
+.section {
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+}
+
+.section__heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.section__heading h2 {
+  margin: 0;
+}
+
+.section__heading p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.coming-soon {
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px dashed var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.coming-soon p {
+  margin-bottom: 0;
+  color: var(--color-muted);
+  max-width: 46rem;
+}
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2.5rem clamp(1rem, 4vw, 3rem);
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+.site-footer h2 {
+  margin-bottom: 0.75rem;
+  font-size: 1.15rem;
+}
+
+.site-footer p {
+  margin-bottom: 0.35rem;
+}
+
+.site-footer a {
+  color: var(--color-highlight);
+}

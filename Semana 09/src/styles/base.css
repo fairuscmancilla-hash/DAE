@@ -1,0 +1,58 @@
+/* Base: reset, variables and typography shared by the whole page. */
+:root {
+  --color-ink: #0f172a;
+  --color-muted: #475569;
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-brand: #1e3a8a;
+  --color-accent: #7c3aed;
+  --color-highlight: #fde68a;
+  --color-line: #e2e8f0;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.9rem;
+  --radius-lg: 1.25rem;
+  --shadow-card: 0 10px 30px rgb(15 23 42 / 0.08);
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: var(--color-ink);
+  background: var(--color-bg);
+  line-height: 1.55;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.15;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-highlight);
+  outline-offset: 3px;
+}
