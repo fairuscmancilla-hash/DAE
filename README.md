@@ -19,6 +19,7 @@ Aquí se guardan los trabajos, ejercicios y proyectos desarrollados por semana.
 | Semana 08 | API headless con DRF, quizctl, permisos por roles y gateway del agente | Python + Django REST Framework | Completada |
 | Semana 09 | Cartelera de cine con React: componentes, props, JSX y tres errores típicos | React + Vite | Completada |
 | Semana 10 | Cartelera con búsqueda, favoritos y persistencia local | React + Vite | Completada |
+| Semana 11 | Comunicación entre componentes, hooks propios y estados de carga | React + Vite | Completada |
 
 > El laboratorio extra opcional de la Semana 09 está en `Semana 09 - Extra/`.
 > El laboratorio extra de la Semana 10 (bandeja de aprobaciones) está en `Semana 10 - Extra/`.
