@@ -1,8 +1,8 @@
 {
-  "name": "dae-s09-cartelera",
+  "name": "dae-s11-comunicacion-componentes",
   "private": true,
   "version": "1.0.0",
-  "description": "Laboratorio 9 de DAE: cartelera de cine con React, JSX, componentes y props",
+  "description": "Laboratorio 11 de DAE: comunicacion entre componentes, hooks propios y estados de carga",
   "type": "module",
   "engines": {
     "node": ">=20.19"
@@ -10,7 +10,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "lucide-react": "^1.76.0",
@@ -19,7 +21,11 @@
     "sonner": "^2.0.8"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^8.0.0",
+    "@testing-library/react": "^16.3.3",
     "@vitejs/plugin-react": "^5.0.0",
-    "vite": "^7.0.0"
+    "jsdom": "^31.0.1",
+    "vite": "^7.0.0",
+    "vitest": "^5.1.1"
   }
 }
