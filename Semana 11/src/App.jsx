@@ -1,24 +1,36 @@
 import { useEffect, useMemo, useState } from "react";
 import { Heart, HeartCrack } from "lucide-react";
 import { Toaster, toast } from "sonner";
-import { Button, Footer, Header, Hero, MovieList, SearchBar } from "./components/index.js";
+import {
+  Button,
+  Footer,
+  Header,
+  Hero,
+  MovieList,
+  PremieresSection,
+  SearchBar,
+} from "./components/index.js";
 import { contact, links } from "./data/movies.js";
 import { billboardPayload } from "./data/billboard.js";
 import { adaptMovies } from "./lib/movieAdapter.js";
 import { readFavorites, writeFavorites } from "./lib/storage.js";
+import useDebounce from "./hooks/useDebounce.js";
 
 export default function App() {
   const movies = useMemo(() => adaptMovies(billboardPayload.peliculas), []);
   const [favorites, setFavorites] = useState(readFavorites);
   const [query, setQuery] = useState("");
   const [onlyFavorites, setOnlyFavorites] = useState(false);
+  const debouncedQuery = useDebounce(query, 300);
+  const hasFilters = query.trim() !== "" || onlyFavorites;
+  const favoriteCount = favorites.length;
 
   useEffect(() => {
     writeFavorites(favorites);
   }, [favorites]);
 
   const visibleMovies = useMemo(() => {
-    const needle = query.trim().toLowerCase();
+    const needle = debouncedQuery.trim().toLowerCase();
 
     return movies.filter((movie) => {
       const matchesText =
@@ -30,7 +42,7 @@ export default function App() {
 
       return matchesText && matchesFavorites;
     });
-  }, [favorites, movies, onlyFavorites, query]);
+  }, [debouncedQuery, favorites, movies, onlyFavorites]);
 
   function toggleFavorite(id) {
     const movie = movies.find((item) => item.id === id);
@@ -58,12 +70,14 @@ export default function App() {
 
   return (
     <>
-      <Header name="Cine Tecsup" links={links} />
+      <Header name="Cine Tecsup" links={links} favoriteCount={favoriteCount} />
       <main>
         <Hero
           movie={featured}
           isFavorite={favorites.includes(featured.id)}
           onToggleFavorite={toggleFavorite}
+          onClearFilters={clearFilters}
+          hasFilters={hasFilters}
         />
 
         <section id="cartelera" className="section" aria-labelledby="cartelera-titulo">
@@ -85,7 +99,7 @@ export default function App() {
               onClick={() => setOnlyFavorites((current) => !current)}
               aria-pressed={onlyFavorites}
             >
-              {onlyFavorites ? "★" : "☆"} Solo favoritas ({favorites.length})
+              {onlyFavorites ? "★" : "☆"} Solo favoritas ({favoriteCount})
             </Button>
           </div>
 
@@ -109,17 +123,7 @@ export default function App() {
           )}
         </section>
 
-        <section
-          id="proximamente"
-          className="coming-soon"
-          aria-labelledby="proximamente-titulo"
-        >
-          <h2 id="proximamente-titulo">Próximamente</h2>
-          <p>
-            Muy pronto anunciaremos los estrenos de la próxima semana. Mientras
-            tanto, consulta los horarios de hoy en la cartelera.
-          </p>
-        </section>
+        <PremieresSection />
       </main>
       <Footer contact={contact} />
       <Toaster position="top-right" richColors closeButton />
