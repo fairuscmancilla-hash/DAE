@@ -1,0 +1,45 @@
+﻿== SERVIDOR: CORS permitido (preflight) ==
+$ curl.exe --noproxy '*' -i -X OPTIONS -H "Origin: http://127.0.0.1:5173" -H "Access-Control-Request-Method: GET" http://127.0.0.1:8001/api/exams/
+HTTP/1.1 200 OK
+access-control-allow-origin: http://127.0.0.1:5173
+access-control-allow-headers: accept, authorization, content-type, user-agent, x-csrftoken, x-requested-with
+access-control-allow-methods: DELETE, GET, OPTIONS, PATCH, POST, PUT
+
+== SERVIDOR: pruebas ==
+$ .venv/Scripts/python.exe manage.py test
+Ran 64 tests in 5.481s
+OK
+Found 64 test(s).
+System check identified no issues (0 silenced).
+
+== CLIENTE: pruebas ==
+$ npm test
+Test Files  5 passed (5)
+Tests  17 passed (17)
+
+== CLIENTE: build ==
+$ npm run build
+vite v7.3.7 building client environment for production...
+2226 modules transformed.
+assets/index-BK-BKht-.css   12.25 kB
+assets/index-D82SKZeR.js   343.43 kB
+built in 7.26s
+
+== ALTA Y BORRADO (Puppeteer sobre el navegador real) ==
+Tras crear: 10 pregunta(s) recibidas sin recargar la página.
+Tras eliminar: 9 pregunta(s) recibidas sin recargar la página.
+Fila encontrada para borrar: true
+
+== ERROR DE VALIDACION ==
+$ formulario enviado con el enunciado vacio
+La API rechazó los datos. text: Este campo no puede estar en blanco. · choices: Este campo no puede estar en blanco. Este campo no puede estar en blanco.
+HTTP 400 en /api/questions/
+
+== ERROR DE CORS ==
+Consola del navegador:
+Access to XMLHttpRequest at 'http://127.0.0.1:8002/api/questions/' from origin 'http://127.0.0.1:5174' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+net::ERR_FAILED
+
+== SERVIDOR APAGADO ==
+[requestfailed] http://127.0.0.1:8001/api/questions/ :: net::ERR_CONNECTION_REFUSED
+Interfaz: No se pudo conectar con la API. Revisa que Django esté encendido y que el origen esté autorizado (CORS).

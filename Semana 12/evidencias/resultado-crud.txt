@@ -1,0 +1,3 @@
+Tras crear: 10 pregunta(s) recibidas sin recargar la página.
+Tras eliminar: 9 pregunta(s) recibidas sin recargar la página.
+Fila encontrada para borrar: true

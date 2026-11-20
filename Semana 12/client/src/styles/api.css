@@ -1,0 +1,186 @@
+/* Lab 12: API console styles, built on the Lab 11 design tokens. */
+.api-nav {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0.85rem max(1rem, 5vw);
+  background: var(--color-brand);
+}
+
+.api-nav button {
+  border: 1px solid rgb(255 255 255 / 0.35);
+  background: transparent;
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.45rem 1rem;
+  cursor: pointer;
+  font: inherit;
+}
+
+.api-nav button.is-active {
+  background: #fff;
+  color: var(--color-brand);
+  font-weight: 700;
+}
+
+.api-page {
+  min-height: 65vh;
+}
+
+.api-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.api-count {
+  color: var(--color-muted);
+  margin-bottom: 1rem;
+}
+
+.api-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.api-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.api-table th,
+.api-table td {
+  padding: 0.75rem 0.9rem;
+  border-bottom: 1px solid var(--color-line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.api-table th {
+  background: #eef2ff;
+  color: var(--color-brand);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.api-table ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.api-table li.is-correct {
+  color: #166534;
+  font-weight: 700;
+}
+
+.btn-sm {
+  padding: 0.35rem 0.7rem;
+  font-size: 0.82rem;
+}
+
+.api-skeleton {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  padding: 1.2rem;
+}
+
+.api-skeleton__message {
+  color: var(--color-muted);
+  font-weight: 600;
+}
+
+.api-skeleton__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 1fr;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--color-line);
+}
+
+.api-skeleton__row span {
+  height: 0.8rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #e2e8f0, #f1f5f9, #e2e8f0);
+  background-size: 200% 100%;
+  animation: api-shimmer 1.2s infinite linear;
+}
+
+@keyframes api-shimmer {
+  to { background-position: -200% 0; }
+}
+
+.api-error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border: 1px solid #fecaca;
+  border-left: 5px solid var(--color-danger);
+  border-radius: var(--radius-md);
+  background: #fef2f2;
+  color: #7f1d1d;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.api-error p {
+  margin: 0.25rem 0 0;
+}
+
+.api-error--form {
+  margin-bottom: 0;
+}
+
+.api-form {
+  display: grid;
+  gap: 1.1rem;
+  max-width: 760px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+}
+
+.api-form label,
+.api-form legend {
+  font-weight: 700;
+  color: var(--color-brand);
+}
+
+.api-form input[type="text"],
+.api-form input:not([type]),
+.api-form textarea,
+.api-form select {
+  display: block;
+  width: 100%;
+  margin-top: 0.4rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  font: inherit;
+}
+
+.api-form fieldset {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+}
+
+.api-choice {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+}
+
+.api-choice input:not([type="radio"]) {
+  margin-top: 0;
+}

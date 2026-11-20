@@ -1,0 +1,2 @@
+Filas visibles en la tabla: 5
+Mensaje de validación: La API rechazó los datos. text: Este campo no puede estar en blanco. · choices: Este campo no puede estar en blanco. Este campo no puede estar en blanco.

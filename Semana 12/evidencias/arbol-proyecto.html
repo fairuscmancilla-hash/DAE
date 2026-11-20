@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Estructura del proyecto — Semana 12</title>
+<style>
+  body { margin:0; background:#1e1e1e; color:#d4d4d4; font:13px/1.55 Consolas,"Courier New",monospace; }
+  .bar { background:#323233; padding:9px 14px; color:#cccccc; font:12px Segoe UI,sans-serif; }
+  .bar b { color:#4fc1ff; }
+  pre { padding:18px 22px; margin:0; }
+  .folder { color:#dcb67a; }
+  .file { color:#9cdcfe; }
+  .new { color:#4ec9b0; font-weight:bold; }
+  .note { color:#858585; }
+</style>
+</head>
+<body>
+<div class="bar"><b>DAE</b> &nbsp;›&nbsp; Semana 12 &nbsp;›&nbsp; <span style="color:#c586c0">EXPLORADOR</span> &nbsp;— servidor y cliente del laboratorio</div>
+<pre><span class="folder">Semana 12/</span>
+├── <span class="folder">server/</span>                         API Django del Lab 8 + CORS
+│   ├── <span class="folder">config/</span>
+│   │   ├── <span class="file">settings.py</span>                corsheaders + CORS_ALLOWED_ORIGINS
+│   │   ├── <span class="new">settings_cors_error.py</span>      helper para provocar el error CORS
+│   │   └── <span class="file">urls.py</span>
+│   ├── <span class="folder">quiz/</span>
+│   │   ├── <span class="file">models.py</span> <span class="file">serializers.py</span> <span class="file">views.py</span> <span class="file">permissions.py</span>
+│   │   └── <span class="folder">tests/</span>
+│   │       ├── <span class="file">test_api.py</span> <span class="file">test_permissions.py</span>
+│   │       └── <span class="new">test_cors.py</span>            3 pruebas nuevas de CORS
+│   ├── <span class="file">manage.py</span>  <span class="file">quizctl.py</span>  <span class="file">requirements.txt</span>
+│   └── <span class="file">README.md</span>  <span class="file">API_TABLE.md</span>
+│
+├── <span class="folder">client/</span>                         React del Lab 11 + Axios
+│   ├── <span class="folder">src/</span>
+│   │   ├── <span class="new">lib/api.js</span>                  base URL, token, listar/crear/eliminar
+│   │   ├── <span class="new">hooks/useQuestions.js</span>       carga / datos / error + recarga
+│   │   ├── <span class="folder">components/</span>
+│   │   │   ├── <span class="new">QuestionsPage.jsx</span>
+│   │   │   ├── <span class="new">QuestionForm.jsx</span>
+│   │   │   ├── <span class="new">QuestionTable.jsx</span>
+│   │   │   ├── <span class="new">LoadingSkeleton.jsx</span>
+│   │   │   └── <span class="new">ErrorBanner.jsx</span>
+│   │   ├── <span class="folder">styles/</span><span class="file">api.css</span>
+│   │   ├── <span class="folder">test/</span><span class="new">api.test.js</span> <span class="new">useQuestions.test.jsx</span>
+│   │   └── <span class="file">App.jsx</span>                   navegación Cartelera / API
+│   ├── <span class="new">.env.example</span>                   modelo de configuren (sin token real)
+│   └── <span class="file">package.json</span>                  axios añadido
+│
+└── <span class="folder">evidencias/</span>                     capturas y salidas reales
+    ├── <span class="new">01..07-*.png</span>
+    └── <span class="new">console-*.txt</span>  <span class="new">resultado-*.txt</span>
+<span class="note">                                                                       </span>
+<span class="note">Verde = archivo nuevo o modificado en el Laboratorio 12.</span></pre>
+</body>
+</html>

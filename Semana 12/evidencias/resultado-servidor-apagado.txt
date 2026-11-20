@@ -1,0 +1,5 @@
+Interfaz: No se pudo cargar la listaNo se pudo conectar con la API. Revisa que Django esté encendido y que el origen esté autorizado (CORS).Reintentar
+Red: [requestfailed] http://127.0.0.1:8001/api/questions/ :: net::ERR_CONNECTION_REFUSED
+[requestfailed] http://127.0.0.1:8001/api/questions/ :: net::ERR_CONNECTION_REFUSED
+[requestfailed] http://127.0.0.1:8001/api/questions/ :: net::ERR_CONNECTION_REFUSED
+[requestfailed] http://127.0.0.1:8001/api/questions/ :: net::ERR_CONNECTION_REFUSED

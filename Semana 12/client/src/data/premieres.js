@@ -1,0 +1,43 @@
+// Payload shape of the (simulated) premieres service.
+export const premieresPayload = [
+  {
+    id_pelicula: 201,
+    titulo: "El Eco del Volcán",
+    cartel: "/posters/2.svg",
+    descripcion: "Un equipo de sismólogos vuelve al cráter que creían abandonado.",
+    clasificacion: "14+",
+    puntuacion: 0,
+    funciones: [],
+    fecha_estreno: "27 nov 2026",
+  },
+  {
+    id_pelicula: 202,
+    titulo: "Sombras de Papel",
+    cartel: "/posters/4.svg",
+    descripcion: "Una titiritera descubre que sus muñecas recuerdan otra vida.",
+    clasificacion: "TP",
+    puntuacion: 0,
+    funciones: [],
+    fecha_estreno: "04 dic 2026",
+  },
+  {
+    id_pelicula: 203,
+    titulo: "Línea de Fuego",
+    cartel: "/posters/6.svg",
+    descripcion: "Bomberos forestales cruzan una cordillera antes del amanecer.",
+    clasificacion: "16+",
+    puntuacion: 0,
+    funciones: [],
+    fecha_estreno: "11 dic 2026",
+  },
+  {
+    id_pelicula: 204,
+    titulo: "El Último Tranvía",
+    cartel: "/posters/7.svg",
+    descripcion: "Un conductor nocturno recoge a pasajeros que no existen.",
+    clasificacion: "14+",
+    puntuacion: 0,
+    funciones: [],
+    fecha_estreno: "18 dic 2026",
+  },
+];

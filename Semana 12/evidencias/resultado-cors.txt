@@ -1,0 +1,1 @@
+Interfaz: No se pudo cargar la listaNo se pudo conectar con la API. Revisa que Django esté encendido y que el origen esté autorizado (CORS).Reintentar
