@@ -1,0 +1,20 @@
+﻿<!doctype html><html lang="es"><meta charset="utf-8"><style>
+body{margin:0;background:#f7f8fc;font-family:Segoe UI,Arial;color:#172033;padding:36px}
+h1{margin:0 0 6px;font-size:26px}p.sub{margin:0 0 26px;color:#5c6784}
+svg{background:#fff;border:1px solid #d7dced;border-radius:14px;box-shadow:0 10px 28px #17203312}
+.box{fill:#eef2ff;stroke:#4f46e5;stroke-width:1.5;rx:10}.title{font:bold 15px Segoe UI;fill:#312e81}
+.txt{font:13px Segoe UI;fill:#334155}.tag{font:11px Consolas;fill:#6366f1}
+.arrow{stroke:#64748b;stroke-width:2;fill:none;marker-end:url(#a)}
+</style><h1>Estructura del catálogo · Laboratorio 13</h1><p class="sub">Una petición /api/catalog/products/ devuelve el producto con su categoría anidada.</p>
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="560" viewBox="0 0 1180 560">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#64748b"/></marker></defs>
+<rect class="box" x="30" y="60" width="230" height="110"/><text class="title" x="50" y="90">React · CatalogPage</text><text class="txt" x="50" y="118">useCatalog → servicios</text><text class="tag" x="50" y="144">src/services/*.js</text>
+<rect class="box" x="330" y="60" width="230" height="110"/><text class="title" x="350" y="90">Capa de servicios</text><text class="txt" x="350" y="118">apiClient (Axios)</text><text class="tag" x="350" y="144">list / get / create / update / delete</text>
+<rect class="box" x="630" y="60" width="230" height="110"/><text class="title" x="650" y="90">DRF · ViewSets</text><text class="txt" x="650" y="118">/api/catalog/</text><text class="tag" x="650" y="144">categories · products</text>
+<rect class="box" x="930" y="60" width="220" height="110"/><text class="title" x="950" y="90">Serializadores</text><text class="txt" x="950" y="118">ProductSerializer</text><text class="tag" x="950" y="144">category = CategorySerializer</text>
+<path class="arrow" d="M260 115 H328"/><path class="arrow" d="M560 115 H628"/><path class="arrow" d="M860 115 H928"/>
+<rect class="box" x="180" y="280" width="330" height="180"/><text class="title" x="205" y="315">Category</text><text class="txt" x="205" y="345">id · name · description</text><text class="txt" x="205" y="372">product_count (anidado)</text><text class="tag" x="205" y="410">1 : N</text>
+<rect class="box" x="670" y="280" width="330" height="180"/><text class="title" x="695" y="315">Product</text><text class="txt" x="695" y="345">category (FK) · name · price</text><text class="txt" x="695" y="372">stock · image · timestamps</text><text class="tag" x="695" y="410">image_url absoluta</text>
+<path class="arrow" d="M510 360 H668"/>
+<text class="txt" x="365" y="510">Admin registrado con listados, búsqueda y filtros · CORS limitado a 127.0.0.1:5174</text>
+</svg></html>

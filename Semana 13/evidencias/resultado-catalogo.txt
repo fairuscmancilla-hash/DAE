@@ -1,0 +1,10 @@
+Sin filtro: 9 producto(s) · categorías cargadas desde la API (9 tarjetas)
+Con filtro Technology: 3 producto(s) · categorías cargadas desde la API (3 tarjetas)
+Categoría anidada en la tarjeta: Technology
+Tras crear: 10 producto(s) · categorías cargadas desde la API
+Tras editar: 10 producto(s) · categorías cargadas desde la API
+Tras eliminar: 9 producto(s) · categorías cargadas desde la API
+Error API: No se pudo cargar el catálogoNo se pudo conectar con la API. Revisa que Django esté encendido y que el origen esté autorizado.Reintentar
+Admin home: Sitio administrativo Autenticación y autorización Nombre del modelo Añadir vínculo Cambiar o ver el enlace de la lista Grupos Añadir Modificar Usuarios Añadir Modificar Catálogo de comercio electrónico Nombre del modelo 
+Filtros admin Products: Filtro Mostrar recuentos Por category Todo Drinks Snacks Technology Por created at Cualquier fecha Hoy Últimos 7 días Este mes Este año
+Consola: [error] Failed to load resource: the server responded with a status of 404 (Not Found)

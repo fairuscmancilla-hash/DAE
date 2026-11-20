@@ -1,0 +1,36 @@
+﻿=== Semana 13 · salidas reales ===
+
+$ python manage.py makemigrations catalog
+Migrations for 'catalog':
+  catalog\migrations\0001_initial.py
+    + Create model Category
+    + Create model Product
+
+$ python manage.py migrate
+  Applying catalog.0001_initial... OK
+
+$ python manage.py seed_catalog
+Listo: 3 categorías, 9 productos con imagen.
+Admin de Django: admin / admin123 (solo para esta máquina).
+
+$ python manage.py test
+Ran 73 tests in 6.646s
+OK
+
+$ curl -H "Authorization: Token ..." http://127.0.0.1:8002/api/catalog/products/?page_size=20
+{"count":9,"next":null,"previous":null,"results":[{"id":2,"name":"Green tea 100 g",
+ "image_url":"http://127.0.0.1:8002/media/products/green-tea.png",
+ "category":{"id":1,"name":"Drinks","description":"Café, té y bebidas para la semana.","product_count":3}}]}
+
+$ npm test
+Test Files  8 passed (8)
+     Tests  27 passed (27)
+
+$ npm run build
+✓ 2244 modules transformed.
+✓ built in 7.39s
+
+$ curl -X OPTIONS http://127.0.0.1:8002/api/catalog/products/ -H "Origin: http://127.0.0.1:5174" -H "Access-Control-Request-Method: GET" -D -
+Access-Control-Allow-Origin: http://127.0.0.1:5174
+
+Evidencia interactiva: resultado-catalogo.txt
