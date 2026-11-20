@@ -23,5 +23,6 @@ Aquí se guardan los trabajos, ejercicios y proyectos desarrollados por semana.
 
 > El laboratorio extra opcional de la Semana 09 está en `Semana 09 - Extra/`.
 > El laboratorio extra de la Semana 10 (bandeja de aprobaciones) está en `Semana 10 - Extra/`.
+> El laboratorio extra de la Semana 11 (los hooks del agente) está en `Semana 11 - Extra/`; incluye `ENTREGABLE.md`, `ENTREGABLE.docx`, `AI_USAGE.md` y el commit `136638c` con la versión original de la IA.
 
 

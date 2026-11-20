@@ -1,0 +1,4 @@
+﻿$ npm run test:ai
+> vitest run --mode ai
+Test Files  5 failed (5)
+Tests  20 failed | 37 passed (57)

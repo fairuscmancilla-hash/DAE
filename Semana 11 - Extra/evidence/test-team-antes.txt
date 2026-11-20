@@ -1,0 +1,4 @@
+﻿$ npm test
+> vitest run --mode team
+Test Files  5 failed (5)
+Tests  40 failed | 17 passed (57)
