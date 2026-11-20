@@ -1,18 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+﻿import { useEffect, useState } from "react";
 
 export default function useDebounce(value, delay) {
   const [debounced, setDebounced] = useState(value);
-  const timer = useRef(null);
 
+  // Limpieza en el MISMO efecto: cada cambio cancela el temporizador anterior.
   useEffect(() => {
-    timer.current = setTimeout(() => {
-      setDebounced(value);
-    }, delay);
+    const timer = setTimeout(() => setDebounced(value), delay);
+    return () => clearTimeout(timer);
   }, [value, delay]);
-
-  useEffect(() => {
-    return () => clearTimeout(timer.current);
-  }, []);
 
   return debounced;
 }
