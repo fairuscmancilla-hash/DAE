@@ -1,8 +1,6 @@
 ﻿# Laboratorio 13 — Estructura de una aplicación de comercio electrónico
 
-**Curso:** Desarrollo de Aplicaciones Empresariales · 4-C24-A  
-**Estudiante:** Yajaira Yasmín Manccilla Cajahuaringa  
-**Repositorio:** https://github.com/fairuscmancilla-hash/DAE · rama `main` · carpeta `Semana 13/`
+**Estudiante:** Yajaira Mancilla
 
 ---
 
