@@ -1,0 +1,9 @@
+{
+  "cart": "Carrito de la IA que no cuenta lo ya agregado",
+  "lines": [
+    {"sku": "KEYBOARD", "name": "Teclado", "unit_price": "49.90", "qty": 3, "subtotal": "149.70"}
+  ],
+  "coupon": "",
+  "coupons_applied": [],
+  "totals": {"subtotal": "149.70", "discount": "0.00", "igv": "26.95", "total": "176.65"}
+}

@@ -1,0 +1,9 @@
+{
+  "cart": "Carrito declarado con precio enviado por el cliente",
+  "lines": [
+    {"sku": "KEYBOARD", "name": "Teclado", "unit_price": "1.00", "qty": 1, "subtotal": "1.00"}
+  ],
+  "coupon": "",
+  "coupons_applied": [],
+  "totals": {"subtotal": "1.00", "discount": "0.00", "igv": "0.18", "total": "1.18"}
+}

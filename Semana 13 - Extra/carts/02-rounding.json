@@ -1,0 +1,9 @@
+{
+  "cart": "Carrito con redondeo float del descuento",
+  "lines": [
+    {"sku": "MOUSEPAD", "name": "Mousepad", "unit_price": "8.45", "qty": 1, "subtotal": "8.45"}
+  ],
+  "coupon": "BIENVENIDA10",
+  "coupons_applied": ["BIENVENIDA10"],
+  "totals": {"subtotal": "8.45", "discount": "0.84", "igv": "1.37", "total": "8.98"}
+}

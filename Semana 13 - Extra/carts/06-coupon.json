@@ -1,0 +1,9 @@
+{
+  "cart": "Carrito de la IA con dos cupones acumulados",
+  "lines": [
+    {"sku": "MOUSEPAD", "name": "Mousepad", "unit_price": "8.45", "qty": 1, "subtotal": "8.45"}
+  ],
+  "coupon": "DAE5",
+  "coupons_applied": ["BIENVENIDA10", "DAE5"],
+  "totals": {"subtotal": "8.45", "discount": "1.27", "igv": "1.29", "total": "8.47"}
+}

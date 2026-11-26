@@ -1,0 +1,9 @@
+{
+  "cart": "Carrito de la IA con cantidad negativa al quitar",
+  "lines": [
+    {"sku": "NOTEBOOK", "name": "Cuaderno", "unit_price": "6.30", "qty": -1, "subtotal": "-6.30"}
+  ],
+  "coupon": "",
+  "coupons_applied": [],
+  "totals": {"subtotal": "-6.30", "discount": "0.00", "igv": "-1.13", "total": "-7.43"}
+}
