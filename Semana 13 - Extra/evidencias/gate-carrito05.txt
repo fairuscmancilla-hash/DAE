@@ -1,0 +1,11 @@
+======================================================================
+COMPUERTA / GATE - modo=team - carrito=05-price.json
+======================================================================
+tests   : 27/27 passed, 0 failing
+auditoria: RECHAZAR (4 hallazgos)
+          - PRICE_MISMATCH: KEYBOARD declares 1.00, server has 49.90
+          - TOTAL_MISMATCH: subtotal declares 1.00, expected 49.90
+          - TOTAL_MISMATCH: igv declares 0.18, expected 8.98
+          - TOTAL_MISMATCH: total declares 1.18, expected 58.88
+VEREDICTO: RECHAZAR (exit=1)
+======================================================================

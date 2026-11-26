@@ -1,0 +1,87 @@
+﻿Semana 13 - Extra/
+.gitignore
+AGENTS.md
+AI_USAGE.md
+carts/
+  01-valid.json
+  02-rounding.json
+  03-negative.json
+  04-overstock.json
+  05-price.json
+  06-coupon.json
+config/
+  __init__.py
+  __pycache__/
+  asgi.py
+  settings.py
+  urls.py
+  wsgi.py
+ENTREGABLE.md
+evidencias/
+  api-manual.txt
+  arreglos-ia.txt
+  auditoria-final-ai.json.txt
+  auditoria-inicial.txt
+  auditoria-inicial-json.txt
+  capturas/
+    01-api-get-vacio.png
+  diff-rechazado.txt
+  duelo-final.txt
+  duelo-inicial.txt
+  gate-carrito03.txt
+  gate-carrito04.txt
+  gate-equipo.txt
+  gate-inicial-ai.json.txt
+  gate-turno1.json
+  gate-turno10.json
+  gate-turno11.json
+  gate-turno12.json
+  gate-turno13.json
+  gate-turno14.json
+  gate-turno2.json
+  gate-turno3.json
+  gate-turno4.json
+  gate-turno5.json
+  gate-turno6.json
+  gate-turno7.json
+  gate-turno8.json
+  gate-turno9.json
+  resultado-inicial-ai.txt
+manage.py
+README.md
+requirements.txt
+shop/
+  __init__.py
+  __pycache__/
+  admin.py
+  api.py
+  apps.py
+  cart_ai.py
+  cart_team.py
+  domain.py
+  impl.py
+  management/
+    __init__.py
+    __pycache__/
+    commands/
+      __init__.py
+      __pycache__/
+      audit_cart.py
+      duelo.py
+      gate.py
+      seed_shop.py
+  migrations/
+    __init__.py
+    __pycache__/
+    0001_initial.py
+  models.py
+  tests/
+    __init__.py
+    __pycache__/
+    base.py
+    test_api.py
+    test_audit.py
+    test_coupons.py
+    test_lines.py
+    test_stock.py
+    test_totals.py

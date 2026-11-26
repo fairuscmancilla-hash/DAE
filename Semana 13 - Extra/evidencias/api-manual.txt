@@ -1,0 +1,72 @@
+﻿PASO 9 - TRES LLAMADAS MANUALES A LA API (SHOP_MODE=team)
+Misma sesion HTTP: -SessionVariable carrito / -WebSession $carrito
+
+--- 1) POST /api/cart/add/ ---
+{
+    "code":  "",
+    "coupon":  "",
+    "lines":  [
+                  {
+                      "sku":  "MOUSEPAD",
+                      "name":  "Mousepad",
+                      "unit_price":  "8.45",
+                      "qty":  1,
+                      "subtotal":  "8.45"
+                  }
+              ],
+    "subtotal":  "8.45",
+    "discount":  "0.00",
+    "igv":  "1.52",
+    "total":  "9.97"
+}
+
+--- 2) POST /api/cart/coupon/ ---
+{
+    "code":  "",
+    "coupon":  "BIENVENIDA10",
+    "lines":  [
+                  {
+                      "sku":  "MOUSEPAD",
+                      "name":  "Mousepad",
+                      "unit_price":  "8.45",
+                      "qty":  1,
+                      "subtotal":  "8.45"
+                  }
+              ],
+    "subtotal":  "8.45",
+    "discount":  "0.85",
+    "igv":  "1.37",
+    "total":  "8.97"
+}
+
+--- 3) POST /api/cart/checkout/ ---
+{
+    "code":  "DAE-20261126131008",
+    "coupon":  "BIENVENIDA10",
+    "lines":  [
+                  {
+                      "sku":  "MOUSEPAD",
+                      "name":  "Mousepad",
+                      "unit_price":  "8.45",
+                      "qty":  1,
+                      "subtotal":  "8.45"
+                  }
+              ],
+    "subtotal":  "8.45",
+    "discount":  "0.85",
+    "igv":  "1.37",
+    "total":  "8.97"
+}
+
+--- GET /api/cart/ despues del pago (carrito vacio) ---
+{
+    "code":  "",
+    "coupon":  "",
+    "lines":  [
+
+              ],
+    "subtotal":  "0.00",
+    "discount":  "0.00",
+    "igv":  "0.00",
+    "total":  "0.00"
+}
