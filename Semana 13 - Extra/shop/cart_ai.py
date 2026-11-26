@@ -17,102 +17,82 @@ class Cart(TeamCart):
         self._client_prices = {}
         self._coupons_applied = []
 
-    # BUG 3: only the incoming quantity is compared with stock; the units
-    # already in the cart are ignored.
+    # FIX 3: incoming units are counted together with the units already held.
     def add(self, sku, qty=1):
-        qty = self._positive_int(qty)
-        entry = self._entry(sku)
-        if qty > entry["stock"]:
-            raise domain.StockError(f"{sku}: {qty} requested > {entry['stock']} in stock")
-        self._qty[sku] = self._qty.get(sku, 0) + qty
-        return self._qty[sku]
+        return super().add(sku, qty)
 
-    # BUG 4: the line is never deleted, so removing more than the current
-    # quantity leaves a negative line that reduces the total.
+    # FIX 4: reaching zero deletes the line; quantity never goes negative.
     def remove(self, sku, qty=1):
-        qty = self._positive_int(qty)
-        self._entry(sku)
-        self._qty[sku] = self._qty.get(sku, 0) - qty
-        return self._qty[sku]
+        return super().remove(sku, qty)
 
-    # BUG 2: the unit price may be overwritten by a value in the request.
+    # FIX 2: the unit price always comes from the server catalog.
     def lines(self):
         result = []
         for sku, qty in sorted(self._qty.items()):
             entry = self._catalog[sku]
-            price = self._client_prices.get(sku, entry["price"])
-            unit_price = float(price)
+            unit_price = domain.money(entry["price"])
             result.append(
                 {
                     "sku": sku,
                     "name": entry["name"],
-                    "unit_price": f"{unit_price:.2f}",
+                    "unit_price": str(unit_price),
                     "qty": qty,
-                    "subtotal": f"{unit_price * qty:.2f}",
+                    "subtotal": str(domain.money(unit_price * qty)),
                 }
             )
         return result
 
-    # BUG 1: money is handled as float and rounded with Python's round(),
-    # which uses banker's rounding on an inexact binary value.
+    # FIX 1: money is Decimal from the catalog and rounded with money().
     def subtotal(self):
-        total = 0.0
-        for sku, qty in self._qty.items():
-            price = self._client_prices.get(sku, self._catalog[sku]["price"])
-            total += float(price) * qty
-        return round(total, 2)
+        return domain.money(
+            sum(
+                (
+                    domain.money(Decimal(self._catalog[sku]["price"]) * qty)
+                    for sku, qty in self._qty.items()
+                ),
+                Decimal("0.00"),
+            )
+        )
 
-    # BUG 5: every click adds another coupon, so discounts accumulate.
+    # FIX 5: one coupon per cart; applying again replaces the previous one.
     def apply_coupon(self, code):
         normalized = domain.normalize_coupon(code)
         if normalized not in self._coupons:
             raise domain.CouponError(f"Unknown coupon: {normalized}")
-        self._coupons_applied.append(normalized)
+        self._coupons_applied = [normalized]
         self._coupon = normalized
         return normalized
 
-    # BUG 5 + BUG 1: all applied rates are summed and rounded as float.
+    # FIX 1 + FIX 5: a single coupon rate and Decimal money only.
     def discount(self):
-        subtotal = float(self.subtotal())
-        rate = sum(float(self._coupons[code]) for code in self._coupons_applied)
-        return round(min(subtotal * rate, subtotal), 2)
+        subtotal = self.subtotal()
+        if self._coupon is None:
+            return Decimal("0.00")
+        return min(domain.money(subtotal * self._coupons[self._coupon]), subtotal)
 
+    # FIX 1: IGV is Decimal money calculated after the discount.
     def igv(self):
-        return round(float(self.subtotal() - self.discount()) * 0.18, 2)
+        return domain.money((self.subtotal() - self.discount()) * domain.IGV_RATE)
 
+    # FIX 1: the final total is Decimal money as well.
     def total(self):
-        return round(float(self.subtotal() - self.discount() + self.igv()), 2)
+        return domain.money(self.subtotal() - self.discount() + self.igv())
 
+    # FIX 1 + FIX 5: the receipt is built from Decimal values and one coupon.
     def summary(self, code=""):
         return {
             "code": code,
-            "coupon": ", ".join(self._coupons_applied),
+            "coupon": self._coupon or "",
             "lines": self.lines(),
-            "subtotal": f"{float(self.subtotal()):.2f}",
-            "discount": f"{float(self.discount()):.2f}",
-            "igv": f"{float(self.igv()):.2f}",
-            "total": f"{float(self.total()):.2f}",
+            "subtotal": str(self.subtotal()),
+            "discount": str(self.discount()),
+            "igv": str(self.igv()),
+            "total": str(self.total()),
         }
 
-    # BUG 2: the request supplies the price and the cart believes it.
+    # FIX 2: the request never supplies a price; delegate to the reviewed rule.
     def add_from_payload(self, payload):
-        if not isinstance(payload, dict):
-            raise domain.BadPayload("Request body must be an object")
-        sku = payload.get("sku")
-        if not isinstance(sku, str) or not sku.strip():
-            raise domain.BadPayload("A text 'sku' is required")
-        sku = sku.strip()
-        price = payload.get("price")
-        if price is not None:
-            self._client_prices[sku] = price
-        try:
-            return self.add(sku, payload.get("qty", 1))
-        except domain.UnknownProduct:
-            raise
-        except domain.StockError as exc:
-            raise domain.StockError(str(exc)) from exc
-        except domain.CartError as exc:
-            raise domain.BadPayload(str(exc)) from exc
+        return super().add_from_payload(payload)
 
     def checkout(self, code=""):
         for sku, qty in self._qty.items():
@@ -143,25 +123,25 @@ class Cart(TeamCart):
             },
         }
 
+    # FIX 2: a declared price is only evidence for the auditor, never an input.
     @classmethod
     def from_dict(cls, data, catalog=None, coupons=None):
         cart = cls(catalog=catalog, coupons=coupons)
         for line in data.get("lines", []):
             cart._qty[line["sku"]] = int(line["qty"])
-            if "unit_price" in line:
-                cart._client_prices[line["sku"]] = line["unit_price"]
         for code in data.get("coupons_applied", [data.get("coupon")] if data.get("coupon") else []):
             if code:
                 cart.apply_coupon(code)
         return cart
 
+    # FIX 2: the session never stores client-supplied prices.
     def public_state(self):
         state = super().public_state()
-        state["client_prices"] = dict(self._client_prices)
         state["coupons_applied"] = list(self._coupons_applied)
         return state
 
+    # FIX 5: a restored session can hold only the single active coupon.
     def restore_state(self, state):
         super().restore_state(state)
-        self._client_prices = dict(state.get("client_prices", {}))
-        self._coupons_applied = list(state.get("coupons_applied", []))
+        self._client_prices = {}
+        self._coupons_applied = [self._coupon] if self._coupon else []

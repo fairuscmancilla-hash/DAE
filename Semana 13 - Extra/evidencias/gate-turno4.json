@@ -1,0 +1,29 @@
+Traceback (most recent call last):
+  File "C:\Users\Yajaira\Desktop\TECSUP\4 CICLO\DAE\DAE\Semana 13 - Extra\manage.py", line 16, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\Yajaira\Desktop\TECSUP\4 CICLO\DAE\DAE\Semana 13 - Extra\manage.py", line 12, in main
+    execute_from_command_line(sys.argv)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Yajaira\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\management\__init__.py", line 443, in execute_from_command_line
+    utility.execute()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Yajaira\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\management\__init__.py", line 437, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Yajaira\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\management\base.py", line 422, in run_from_argv
+    self.execute(*args, **cmd_options)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Yajaira\AppData\Local\Programs\Python\Python313\Lib\site-packages\django\core\management\base.py", line 466, in execute
+    output = self.handle(*args, **options)
+  File "C:\Users\Yajaira\Desktop\TECSUP\4 CICLO\DAE\DAE\Semana 13 - Extra\shop\management\commands\gate.py", line 53, in handle
+    audit = audit_file(Path(options["cart"]), replay=True)
+  File "C:\Users\Yajaira\Desktop\TECSUP\4 CICLO\DAE\DAE\Semana 13 - Extra\shop\management\commands\audit_cart.py", line 68, in audit_file
+    replayed = active.summary()
+  File "C:\Users\Yajaira\Desktop\TECSUP\4 CICLO\DAE\DAE\Semana 13 - Extra\shop\cart_ai.py", line 95, in summary
+    "igv": f"{float(self.igv()):.2f}",
+                    ~~~~~~~~^^
+  File "C:\Users\Yajaira\Desktop\TECSUP\4 CICLO\DAE\DAE\Semana 13 - Extra\shop\cart_ai.py", line 83, in igv
+    return round(float(self.subtotal() - self.discount()) * 0.18, 2)
+                       ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for -: 'decimal.Decimal' and 'float'

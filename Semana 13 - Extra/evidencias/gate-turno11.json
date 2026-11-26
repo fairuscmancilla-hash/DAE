@@ -1,0 +1,16 @@
+{
+  "verdict": "ACEPTAR",
+  "mode": "ai",
+  "tests": {
+    "total": 27,
+    "passing": 27,
+    "failing": 0,
+    "failing_names": []
+  },
+  "audit": {
+    "cart": "01-valid.json",
+    "verdict": "ACEPTAR",
+    "findings": []
+  },
+  "exit_code": 0
+}

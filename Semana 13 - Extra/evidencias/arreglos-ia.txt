@@ -1,0 +1,25 @@
+﻿ARREGLOS DE LA IA - un metodo por turno, compuerta como criterio de terminado
+============================================================================
+Estado inicial (commit 371d8a0): gate --modo ai -> RECHAZAR, 12/27 pruebas fallan.
+Fallo 1: redondeo con flotantes.
+Fallo 2: precio tomado del cliente.
+Fallo 3: existencias sin contar lo ya agregado.
+Fallo 4: cantidad negativa al quitar.
+Fallo 5: descuento acumulado dos veces.
+Turno 1 - add_from_payload: antes 12 fallos, despues 12 fallos; veredicto RECHAZAR; exit 1.
+  Nota: el precio del cliente ya no se lee; la misma prueba ahora falla solo porque subtotal devuelve float (fallo 1).
+Turno 2 - lines: antes 12 fallos, despues 12 fallos; veredicto RECHAZAR; las lineas ya muestran el precio del servidor.
+Turno 3 - from_dict: 12 fallos; veredicto RECHAZAR; el replay ya no toma price del carrito declarado.
+Turno 4 - subtotal:  fallos; veredicto ; subtotal ya es Decimal con ROUND_HALF_UP.
+  Nota: al arreglar subtotal, el metodo igv aun float produjo TypeError; la compuerta no pudo imprimir veredicto. Se corrige igv y discount en los siguientes turnos.
+Turno 5 - discount:  fallos; veredicto ; descuento ya es Decimal, falta eliminar la acumulacion de cupones.
+  Nota: total aun sumaba float con Decimal; se corrige igv y total en los siguientes turnos.
+Turno 6 - igv: 9 fallos; veredicto RECHAZAR.
+Turno 7 - total: 5 fallos; veredicto RECHAZAR; total ya es Decimal.
+Turno 8 - apply_coupon: 3 fallos; veredicto RECHAZAR; doble clic ya es idempotente.
+Turno 9 - add: 2 fallos; veredicto RECHAZAR; existencias ya cuentan lo agregado.
+Turno 10 - remove: 0 fallos; veredicto ACEPTAR; exit 0.
+Turno 11 - summary (rechazo humano del turno 10 corregido): 0 fallos; veredicto ACEPTAR; exit 0.
+Turno 12 - discount: 0 fallos; veredicto ACEPTAR; un solo cupon tambien en el calculo.
+Turno 13 - public_state: 0 fallos; veredicto ACEPTAR; la sesion no guarda precios del cliente.
+Turno 14 - restore_state (ultimo): 0 fallos; veredicto ACEPTAR; exit 0.

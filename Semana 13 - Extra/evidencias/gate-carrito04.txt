@@ -1,0 +1,8 @@
+======================================================================
+COMPUERTA / GATE - modo=team - carrito=04-overstock.json
+======================================================================
+tests   : 27/27 passed, 0 failing
+auditoria: RECHAZAR (1 hallazgos)
+          - OVER_STOCK: KEYBOARD asks 3 but stock is 2
+VEREDICTO: RECHAZAR (exit=1)
+======================================================================

@@ -1,0 +1,129 @@
+{
+  "carts": [
+    {
+      "cart": "01-valid.json",
+      "mode": "ai",
+      "verdict": "ACEPTAR",
+      "findings": [],
+      "expected_totals": {
+        "subtotal": "8.45",
+        "discount": "0.85",
+        "igv": "1.37",
+        "total": "8.97"
+      },
+      "replayed_totals": {
+        "subtotal": "8.45",
+        "discount": "0.85",
+        "igv": "1.37",
+        "total": "8.97"
+      }
+    },
+    {
+      "cart": "02-rounding.json",
+      "mode": "ai",
+      "verdict": "RECHAZAR",
+      "findings": [
+        "TOTAL_MISMATCH: discount declares 0.84, expected 0.85",
+        "TOTAL_MISMATCH: total declares 8.98, expected 8.97"
+      ],
+      "expected_totals": {
+        "subtotal": "8.45",
+        "discount": "0.85",
+        "igv": "1.37",
+        "total": "8.97"
+      },
+      "replayed_totals": {
+        "subtotal": "8.45",
+        "discount": "0.85",
+        "igv": "1.37",
+        "total": "8.97"
+      }
+    },
+    {
+      "cart": "03-negative.json",
+      "mode": "ai",
+      "verdict": "RECHAZAR",
+      "findings": [
+        "BAD_QTY: NOTEBOOK has quantity -1"
+      ],
+      "expected_totals": {
+        "subtotal": "-6.30",
+        "discount": "0.00",
+        "igv": "-1.13",
+        "total": "-7.43"
+      },
+      "replayed_totals": {
+        "subtotal": "-6.30",
+        "discount": "0.00",
+        "igv": "-1.13",
+        "total": "-7.43"
+      }
+    },
+    {
+      "cart": "04-overstock.json",
+      "mode": "ai",
+      "verdict": "RECHAZAR",
+      "findings": [
+        "OVER_STOCK: KEYBOARD asks 3 but stock is 2"
+      ],
+      "expected_totals": {
+        "subtotal": "149.70",
+        "discount": "0.00",
+        "igv": "26.95",
+        "total": "176.65"
+      },
+      "replayed_totals": {
+        "subtotal": "149.70",
+        "discount": "0.00",
+        "igv": "26.95",
+        "total": "176.65"
+      }
+    },
+    {
+      "cart": "05-price.json",
+      "mode": "ai",
+      "verdict": "RECHAZAR",
+      "findings": [
+        "PRICE_MISMATCH: KEYBOARD declares 1.00, server has 49.90",
+        "TOTAL_MISMATCH: subtotal declares 1.00, expected 49.90",
+        "TOTAL_MISMATCH: igv declares 0.18, expected 8.98",
+        "TOTAL_MISMATCH: total declares 1.18, expected 58.88"
+      ],
+      "expected_totals": {
+        "subtotal": "49.90",
+        "discount": "0.00",
+        "igv": "8.98",
+        "total": "58.88"
+      },
+      "replayed_totals": {
+        "subtotal": "49.90",
+        "discount": "0.00",
+        "igv": "8.98",
+        "total": "58.88"
+      }
+    },
+    {
+      "cart": "06-coupon.json",
+      "mode": "ai",
+      "verdict": "RECHAZAR",
+      "findings": [
+        "MULTIPLE_COUPONS: BIENVENIDA10, DAE5; only one coupon is allowed",
+        "TOTAL_MISMATCH: discount declares 1.27, expected 0.42",
+        "TOTAL_MISMATCH: igv declares 1.29, expected 1.45",
+        "TOTAL_MISMATCH: total declares 8.47, expected 9.48"
+      ],
+      "expected_totals": {
+        "subtotal": "8.45",
+        "discount": "0.42",
+        "igv": "1.45",
+        "total": "9.48"
+      },
+      "replayed_totals": {
+        "subtotal": "8.45",
+        "discount": "0.42",
+        "igv": "1.45",
+        "total": "9.48"
+      }
+    }
+  ]
+}

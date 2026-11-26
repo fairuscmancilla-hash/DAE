@@ -1,0 +1,8 @@
+======================================================================
+COMPUERTA / GATE - modo=team - carrito=03-negative.json
+======================================================================
+tests   : 27/27 passed, 0 failing
+auditoria: RECHAZAR (1 hallazgos)
+          - BAD_QTY: NOTEBOOK has quantity -1
+VEREDICTO: RECHAZAR (exit=1)
+======================================================================

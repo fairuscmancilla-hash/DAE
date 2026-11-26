@@ -92,7 +92,12 @@ class Command(BaseCommand):
         parser.add_argument("--strict", action="store_true", help="Exit 1 when any cart is rejected")
 
     def handle(self, *args, **options):
-        paths = [Path(p) for p in options["carts"]]
+        paths = []
+        for entry in options["carts"]:
+            if any(char in entry for char in "*?["):
+                paths.extend(sorted(Path(".").glob(entry)))
+            else:
+                paths.append(Path(entry))
         if not paths:
             paths = sorted((BASE / "carts").glob("*.json"))
         reports = [audit_file(path, replay=options["replay"]) for path in paths]

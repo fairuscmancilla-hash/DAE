@@ -1,0 +1,19 @@
+{
+  "verdict": "RECHAZAR",
+  "mode": "ai",
+  "tests": {
+    "total": 27,
+    "passing": 25,
+    "failing": 2,
+    "failing_names": [
+      "test_add_builds_a_line_and_remove_to_zero_deletes_it",
+      "test_remove_more_than_current_never_creates_negative_quantity"
+    ]
+  },
+  "audit": {
+    "cart": "01-valid.json",
+    "verdict": "ACEPTAR",
+    "findings": []
+  },
+  "exit_code": 1
+}

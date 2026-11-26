@@ -1,0 +1,33 @@
+﻿RECHAZO POR REVISION HUMANA (la compuerta estaba en verde)
+=========================================================
+Estado: turno 10, `python manage.py gate --modo ai --json` -> ACEPTAR, exit 0,
+0/27 pruebas fallan, sin hallazgos de auditoria.
+
+Diff propuesto por el agente para dejar la compuerta en verde (ya aplicado):
+---------------------------------------------------------------------------
+--- a/Semana 13 - Extra/shop/cart_ai.py
++++ b/Semana 13 - Extra/shop/cart_ai.py
+@@ -90,10 +90,10 @@
+     def summary(self, code=""):
+         return {
+             "code": code,
+             "coupon": ", ".join(self._coupons_applied),
+             "lines": self.lines(),
+-            "subtotal": f"{float(self.subtotal()):.2f}",
+-            "discount": f"{float(self.discount()):.2f}",
+-            "igv": f"{float(self.igv()):.2f}",
+-            "total": f"{float(self.total()):.2f}",
++            "subtotal": str(self.subtotal()),
++            "discount": str(self.discount()),
++            "igv": str(self.igv()),
++            "total": str(self.total()),
+         }
+
+Veredicto humano: RECHAZADO temporalmente por la pregunta 1 del contrato —
+"¿todo el dinero es Decimal de principio a fin?". Aunque las pruebas pasaban,
+`summary()` convertia cada total a float antes de formatearlo; un total como
+Decimal("8.97") pasaba por float(8.97) y podia volver a introducir error en
+la interfaz de la API o en un replay futuro. Decision: no aceptar el turno
+como terminado hasta cambiar `summary`.
+
+Evidencia de la compuerta en verde: evidencias/gate-turno10.json

@@ -1,0 +1,26 @@
+{
+  "verdict": "RECHAZAR",
+  "mode": "ai",
+  "tests": {
+    "total": 27,
+    "passing": 18,
+    "failing": 9,
+    "failing_names": [
+      "test_double_click_does_not_accumulate_discount",
+      "test_one_coupon_replaces_the_previous_one",
+      "test_add_builds_a_line_and_remove_to_zero_deletes_it",
+      "test_remove_more_than_current_never_creates_negative_quantity",
+      "test_add_counts_what_is_already_in_the_cart",
+      "test_igv_is_calculated_after_discount",
+      "test_mousepad_with_welcome_coupon_matches_the_manual_calculation",
+      "test_total_is_always_decimal",
+      "test_totals_without_coupon"
+    ]
+  },
+  "audit": {
+    "cart": "01-valid.json",
+    "verdict": "ACEPTAR",
+    "findings": []
+  },
+  "exit_code": 1
+}

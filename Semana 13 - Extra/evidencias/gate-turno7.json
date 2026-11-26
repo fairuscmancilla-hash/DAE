@@ -1,0 +1,22 @@
+{
+  "verdict": "RECHAZAR",
+  "mode": "ai",
+  "tests": {
+    "total": 27,
+    "passing": 22,
+    "failing": 5,
+    "failing_names": [
+      "test_double_click_does_not_accumulate_discount",
+      "test_one_coupon_replaces_the_previous_one",
+      "test_add_builds_a_line_and_remove_to_zero_deletes_it",
+      "test_remove_more_than_current_never_creates_negative_quantity",
+      "test_add_counts_what_is_already_in_the_cart"
+    ]
+  },
+  "audit": {
+    "cart": "01-valid.json",
+    "verdict": "ACEPTAR",
+    "findings": []
+  },
+  "exit_code": 1
+}

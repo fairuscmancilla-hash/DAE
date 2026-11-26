@@ -1,0 +1,23 @@
+======================================================================
+AUDITORIA DE CARRITOS / SHOP_MODE=ai / replay=False
+======================================================================
+[01-valid.json] ACEPTAR
+  sin hallazgos
+[02-rounding.json] RECHAZAR
+  - TOTAL_MISMATCH: discount declares 0.84, expected 0.85
+  - TOTAL_MISMATCH: total declares 8.98, expected 8.97
+[03-negative.json] RECHAZAR
+  - BAD_QTY: NOTEBOOK has quantity -1
+[04-overstock.json] RECHAZAR
+  - OVER_STOCK: KEYBOARD asks 3 but stock is 2
+[05-price.json] RECHAZAR
+  - PRICE_MISMATCH: KEYBOARD declares 1.00, server has 49.90
+  - TOTAL_MISMATCH: subtotal declares 1.00, expected 49.90
+  - TOTAL_MISMATCH: igv declares 0.18, expected 8.98
+  - TOTAL_MISMATCH: total declares 1.18, expected 58.88
+[06-coupon.json] RECHAZAR
+  - MULTIPLE_COUPONS: BIENVENIDA10, DAE5; only one coupon is allowed
+  - TOTAL_MISMATCH: discount declares 1.27, expected 0.42
+  - TOTAL_MISMATCH: igv declares 1.29, expected 1.45
+  - TOTAL_MISMATCH: total declares 8.47, expected 9.48
+======================================================================
